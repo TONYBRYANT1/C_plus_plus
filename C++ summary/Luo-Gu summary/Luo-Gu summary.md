@@ -339,7 +339,7 @@ int main()
 
 
 
-#### 4.	islower( ) 函数	
+#### 4.1	islower( ) 函数	
 
 islower( )函数用来检查所传的字符是否是小写字母。
 
@@ -373,9 +373,43 @@ int main()
 
 
 
-#### 5.	isupper( ) 函数	
+#### 4.2	tolower( ) 函数
 
-islower( )函数用来检查所传的字符是否是大写字母。
+tolower( ) 函数用来把大写字母转换为小写字母。
+
+（1）【头文件】#include<ctype.h> 
+
+（2）【函数原型】int tolower(int c);
+
+（3）【参数说明】
+
+- ​	**c** -- 这是要被转换为小写的字母。
+  - 1.字符 a => c = int(a)
+  - 2.字符数组 char[ ] = int(char[ ])
+- ​    **a~z** : **97~122**
+
+（4）   【用法示例】
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string str = "ABCDEFG";
+    for(int i=0 ; i<str.length() ; i++)
+    {
+        str[i] = char(tolower(str[i]));
+    }
+    cout << str << endl; //abcdefg
+    return 0;
+}
+```
+
+
+
+#### 5.1	isupper( ) 函数	
+
+isupper( ) 函数用来检查所传的字符是否是大写字母。
 
 （1）【头文件】#include<ctype.h> 
 
@@ -411,9 +445,41 @@ int main()
 
 
 
+#### 5.2	toupper( ) 函数
+
+toupper( ) 函数用来把小写字母转换为大写字母。
+
+（1）【头文件】#include<ctype.h> 
+
+（2）【函数原型】int toupper(int c);
+
+（3）【参数说明】
+
+- ​	**c** -- 这是要被转换为小写的字母。
+  - 1.字符 a => c = int(a)
+  - 2.字符数组 char[ ] = int(char[ ])
+- ​    **a~z** : **97~122**
+
+（4）   【用法示例】
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	string str = "abcdefg";
+    for(int i=0 ; i<str.length() ; i++)
+    {
+        str[i] = char(toupper(str[i]));
+    }
+    cout << str << endl; //ABCDEFG
+	return 0;
+}
+```
 
 
-### 1.[P5015 [NOIP2018 普及组] 标题统计](https://www.luogu.com.cn/problem/P5015)
+
+### [P5015 [NOIP2018 普及组] 标题统计](https://www.luogu.com.cn/problem/P5015)
 
 要点 : 
 
@@ -461,9 +527,13 @@ fgets(arr , sizeof(arr) , stdin) <==> gets(arr)
 
 #### 5.	getline( ) 函数
 
-1.接收一个字符串，可以接收空格并输出，不过要包含 #include<string>
+1.接收一个字符串，可以接收空格并输出，不过要包#include<string>
+
 2.这也就弥补了之前cin.getline()和cin.get（）的不能读取string的一个小的弊端
+
 3.写法：getline(cin,字符串数组名);
+
+4.如果getline( ) ，前有 cin >> ，因为缓冲区中有回车键 ' \r ' ，所以要加上getchar( )  
 
 ```c++
 #include<iostream>
@@ -478,3 +548,98 @@ int main()
 }
 ```
 
+
+
+
+
+### [P5734 【深基6.例6】文字处理软件](https://www.luogu.com.cn/problem/P5734)
+
+要点 : 
+
+​	string 的使用
+
+函数使用 :
+
+#### 1. substr( )  函数 (string截取函数)
+
+1. 两个参数
+
+   str.substr(size_t pos , size_t len);
+
+2. 一个参数(从 pos 到最后)
+
+   str.substr(pos);
+
+   ```c++
+   #include<bits/stdc++.h>
+   using namespace std;
+   int main()
+   {
+       string str = "I Love You";
+       int pos = str.find('e');
+       str = str.substr(pos+2);
+        cout << str << endl;
+   
+       str = "I Love You";
+       str = str.substr(2 , 4);
+       cout << str << endl;
+       return 0;
+   }
+   ```
+
+
+
+#### 2.insert( ) 函数 (string插入函数)
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string str = "I You";
+    string str2("Love ");
+    str = str.insert(2 , str2);
+    cout << str << endl;
+    str = "I You";
+    str2 = "Love You";
+    str = str.insert(2 , str2 , 0 , 5);
+    cout << str << endl;
+    return 0;
+}
+```
+
+
+
+#### 3.string的函数总结
+
+1. 赋值：assign( )
+2. 比较：1.直接比较	2.compare( )
+3. 连接：1.     ' + '        2.append( )
+
+4. 查找：1.find( )	2.rfind( )	3.find_first_of( )	4.find_first_not_of( )	5.find_last_of( )	6.find_last_not_of( )
+5. 替换：replace( )	
+6. 删除：erase( )
+7. 截取：substr( )
+8. 插入：insert( )
+
+
+
+### [P1308 [NOIP2011 普及组] 统计单词数](https://www.luogu.com.cn/problem/P1308)
+
+要点：
+
+​			string的使用
+
+函数：
+
+#### 1.	tolower( ) 函数
+
+（上述有）
+
+#### 2.	toupper( ) 函数
+
+（上述有）
+
+
+
+[A-游游的正方形披萨_牛客周赛 Round 17 (nowcoder.com)](https://ac.nowcoder.com/acm/contest/68338/A)

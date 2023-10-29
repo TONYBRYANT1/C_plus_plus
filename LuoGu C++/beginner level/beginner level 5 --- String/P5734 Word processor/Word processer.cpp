@@ -11,6 +11,7 @@ using namespace std;
 string arr1(100 , '\0');
 string arr2(100 , '\0');
 string arr3(100 , '\0');
+char arr4[100];
 int m=0;
 int main()
 {
@@ -32,19 +33,17 @@ int main()
         }
         else if(m==2)
         {
+            memset(arr4 , '\0' , sizeof(arr4));
             int a , b;
             cin >> a >> b;
-            arr2.clear();
+
             for(int i=a , j=0 ; i<a+b ;i++,j++)
             {
-                arr2.push_back(arr1[i]);
-                dbg(arr2[j]);
-
-                dbg(j);
+                arr4[j] = arr1[i];
             }
-            arr2.push_back('\0');
-            dbg(arr2.length());
-            arr1 = arr2;
+
+
+            arr1 = arr4;
             cout << arr1 << endl;
         }
         else if(m==3)
@@ -72,10 +71,13 @@ int main()
             //     }
             // }
             int p1=0,p2=0;
-            for(int i=0;i<=ret;i++){
-                if(i>=c&&i<c+ret2){
+            for(int i=0;i<ret;i++)
+            {
+                if(i>=c&&i<=c+ret2-1)
+                {
                     arr3[i]=arr2[p2++];
-                }else{
+                }else
+                {
                     arr3[i]=arr1[p1++];
                 }
             }
